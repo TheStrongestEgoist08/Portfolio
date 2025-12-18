@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bigal, Carl Michael C.">
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/github.svg">
+    <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/github.svg">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="font-mono relative">
+        <!-- Navigation Bar for Desktop -->
+        <nav class="hidden md:block bg-gray-800 text-white p-4 sticky top-0 right-0 left-0">
+            <ul class="flex gap-6 justify-evenly items-center">
+                <li>
+                    <a href="#home" class="flex gap-3">
+                        <i class="bi bi-house-fill"></i>
+                        Home
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="#about" class="flex gap-3">
+                        <i class="bi bi-person-fill"></i>
+                        About Me
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#education" class="flex gap-3">
+                        <i class="bi bi-backpack3-fill"></i>
+                        Education
+                    </a>
+                </li>
+
+                <li>
+                    <a href="" class="flex gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        Tech Stack
+                    </a>
+                </li>
+
+                <li>
+                    <a href="" class="flex gap-3">
+                        <i class="bi bi-pc-display"></i>
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="" class="flex gap-3">
+                        <i class="bi bi-envelope-check-fill"></i>
+                        Contacts
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- SideBar for Mobile -->
+        <nav 
+            class="md:hidden bg-gray-800 text-white p-4 sticky top-0 right-0 left-0" 
+            x-data="{ sidebar: false }"
+            x-effect="document.body.style.overflow = sidebar ? 'hidden' : 'auto'"
+        >
+
+            <!-- Hamburger -->
+            <div class="flex items-center">
+                <button class="text-3xl ml-auto" @click="sidebar = true">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+
+            <!-- Overlay -->
+            <div x-show="sidebar" @click="sidebar = false" class="fixed inset-0 bg-black bg-opacity-50"></div>
+
+            <!-- Sidebar -->
+            <aside
+                x-show="sidebar"
+                @click.away="sidebar = false"
+                x-transition:enter="transition transform duration-300"
+                x-transition:enter-start="-translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition transform duration-300"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="-translate-x-full"
+                class="fixed top-0 left-0 h-full w-64 bg-gray-900 p-6 shadow-lg"
+            >
+                <ul class="space-y-4">
+                    <li>
+                        <a href="" class="flex gap-3">
+                            <i class="bi bi-house-fill"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class="flex gap-3">
+                            <i class="bi bi-person-fill"></i>
+                            About Me
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class="flex gap-3">
+                            <i class="bi bi-backpack3-fill"></i>
+                            Education
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class="flex gap-3">
+                            <i class="bi bi-code-slash"></i>
+                            Tech Stack
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class="flex gap-3">
+                            <i class="bi bi-pc-display"></i>
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class="flex gap-3">
+                            <i class="bi bi-envelope-check-fill"></i>
+                            Contacts
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+        </nav>
+
+        <!-- Home -->
+        <section id="home" class="home min-h-screen py-16 px-6 md:px-20 bg-gray-100 flex items-center odd:bg-white even:bg-blue-50">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+                <!-- Photo -->
+                <div class="flex-shrink-0 w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-lg border-4 border-blue-500">
+                    <img src="/Assets/1398470.png" alt="Profile Photo" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Description + Contact Button -->
+                <div class="text-center md:text-left flex flex-col items-center md:items-start">
+                    <h1 class="text-4xl font-bold mb-3">Carl Michael C. Bigal</h1>
+
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        4th Year Student at Polytechnic University of the Philippines, Calauan Campus. Currently Taking Bachelor of Science in Information Technology.
+                    </p>
+
+                    <!-- Contact Button -->
+                    <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition whitespace-nowrap active:scale-90">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="about min-h-screen flex items-center justify-center bg-gray-100 px-6 md:px-20 py-20 odd:bg-white even:bg-blue-50">
+            <div class="max-w-max w-full p-10">
+                <header class="mb-6">
+                    <h1 class="text-4xl font-bold text-gray-800 border-b-4 border-blue-500 inline-block pb-2">
+                        About Me
+                    </h1>
+                </header>
+
+                <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
+                    <p class="text-justify">
+                        I am a <span class="font-semibold text-blue-600">4th-year BSIT student</span> at 
+                        Polytechnic University of the Philippines – Calauan Campus, passionate about 
+                        <span class="font-semibold">web development, systems design,</span> and building 
+                        real-world projects that create meaningful impact.
+                    </p>
+
+                    <p class="text-justify">
+                        I love learning new technologies, solving problems, and improving my skills through 
+                        hands-on projects. My goal is to become a well-rounded developer capable of designing, 
+                        developing, and deploying scalable applications.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class=" education min-h-screen flex items-center py-16 bg-gray-100 border-blue-500 border-5 odd:bg-white even:bg-blue-50">
+            <div class="px-10">
+                <!-- Header -->
+                <header class="mb-12 text-center">
+                    <h1 class="text-4xl font-bold text-gray-800">Education</h1>
+                    <p class="text-gray-500 mt-2">My academic background and journey</p>
+                </header>
+
+                <!-- Timeline -->
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
+
+                    <!-- Pre-school -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Pre-school</h2>
+                        <p class="text-lg font-medium mt-1">Limao Daycare Center</p>
+                        <p class="text-gray-600">Brgy. Limao Calauan Laguna</p>
+                        <p class="text-gray-500 text-sm">Year attended here</p>
+                        <p class="mt-3 text-gray-700 text-justify">
+                            Attended early childhood education, where I developed foundational 
+                            skills in socialization and basic learning.
+                        </p>
+                    </div>
+
+                    <!-- Elementary -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Elementary</h2>
+                        <p class="text-lg font-medium mt-1">Limao Elementary School</p>
+                        <p class="text-gray-600">Brgy Limao Calauan Laguna</p>
+                        <p class="text-gray-500 text-sm">Year attended here</p>
+                        <p class="mt-3 text-gray-700 text-justify">
+                            Completed primary education, focusing on core subjects such as math, 
+                            science, and language arts.
+                        </p>
+                    </div>
+
+                    <!-- Junior Highschool -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Junior Highschool</h2>
+                        <p class="text-lg font-medium mt-1">Alaminos Integrated National Highschool</p>
+                        <p class="text-gray-600">Alaminos, Laguna</p>
+                        <p class="text-gray-500 text-sm">Year attended here</p>
+                        <p class="mt-3 text-gray-700 text-justify">
+                            Participated in various extracurricular activities and developed a 
+                            strong interest in technology.
+                        </p>
+                    </div>
+
+                    <!-- Senior Highschool -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h2 class="text-2xl font-semibold text-indigo-600">Senior Highschool</h2>
+                        <p class="text-lg font-medium mt-1">Palm Valley Multiple Intelligence School</p>
+                        <p class="text-gray-600">Alaminos, Laguna</p>
+                        <p class="text-gray-500 text-sm">Year attended here</p>
+                        <p class="mt-3 text-gray-700 text-justify">
+                            Specialized in the STEM strand, enhancing my knowledge in science, technology, engineering, 
+                            and mathematics.
+                        </p>
+                    </div>
+
+                    <!-- College -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h2 class="text-2xl font-semibold text-indigo-600">College</h2>
+                        <p class="text-lg font-medium mt-1">Polytechnic University of the Philippines - Calauan Campus</p>
+                        <p class="text-gray-600">Calauan, Laguna</p>
+                        <p class="text-gray-500 text-sm">Year attended here</p>
+                        <p class="mt-3 text-gray-700 text-justify">
+                            Pursuing a Bachelor of Science in Information Technology, focusing on programming, 
+                            web development, and problem-solving skills.
+                        </p>
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section id="techstack" class="techstack odd:bg-white even:bg-blue-50 min-h-screen flex items-center">
+            <div class="max-w-6xl mx-auto w-full">
+                <header class="mb-24 text-center">
+                    <h1 class="text-4xl font-bold text-gray-800 border-b-4 border-blue-500 inline-block pb-2">
+                        Tech Stack
+                    </h1>
+                </header>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-16 h-16 mb-2" alt="HTML5">
+                        <span>HTML5</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-16 h-16 mb-2" alt="CSS3">
+                        <span>CSS3</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-16 h-16 mb-2" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="w-16 h-16 mb-2" alt="PHP">
+                        <span>PHP</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" class="w-16 h-16 mb-2" alt="Laravel">
+                        <span>Laravel</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" class="w-16 h-16 mb-2" alt="Tailwind CSS">
+                        <span>Tailwind CSS</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" class="w-16 h-16 mb-2" alt="C">
+                        <span>C</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="w-16 h-16 mb-2" alt="C++">
+                        <span>C++</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" class="w-16 h-16 mb-2" alt="Java">
+                        <span>Java</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_C_sharp.svg" class="w-16 h-16 mb-2" alt="C#">
+                        <span>C#</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" class="w-16 h-16 mb-2" alt="Python">
+                        <span>Python</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-plain-wordmark.svg" class="w-16 h-16 mb-2" alt="MySQL">
+                        <span>MySQL</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://logo.svgcdn.com/logos/alpinejs-icon.svg" class="w-16 h-16 mb-2" alt="Alpine.js">
+                        <span>Alpine.js</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/VB.NET_Logo.svg" class="w-16 h-16 mb-2" alt="Visual Basic">
+                        <span>Visual Basic</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="projects odd:bg-white even:bg-blue-50 min-h-screen flex items-center">
+
+        </section>
+
+        <!-- Contacts -->
+        <footer id="contacts" class="contacts odd:bg-white even:bg-blue-50 min-h-[50vh] flex items-center py-10">
+            <div class="container mx-auto px-6 w-full">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- About Me -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">About Me</h2>
+
+                        <p class="text-gray-600 leading-relaxed">
+                            I’m a passionate developer focused on building clean, functional,
+                            and user-friendly web applications. Always learning, always improving.
+                        </p>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Get in Touch</h3>
+
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start gap-2">
+                                <i class="bi bi-envelope-fill text-blue-600"></i>
+                                <span>bigalcarlmichael2003@gmail.com</span>
+                            </li>
+
+                            <li class="flex items-start gap-2">
+                                <i class="bi bi-telephone-fill text-blue-600"></i>
+                                <span>+63 961 477 2243</span>
+                            </li>
+                            
+                            <li class="flex items-start gap-2">
+                                <i class="bi bi-geo-alt-fill text-blue-600"></i>
+                                <span>107 Purok II Brgy Limao Calauan Laguna Philippines</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Socials -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Socials</h3>
+
+                        <div class="flex space-x-5 text-4xl">
+                            <a href="https://github.com/TheStrongestEgoist08" target="_blank" class="hover:text-gray-900 transition">
+                                <i class="bi bi-github"></i>
+                            </a>
+
+                            <a href="https://web.facebook.com/TheStrongestSorcerer08" target="_blank" class="hover:text-blue-600 transition"> 
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom -->
+                <div class="mt-10 border-t pt-6 text-center text-gray-500 text-sm">
+                    &copy; 2025 • Bigal Carl Michael C • Portfolio
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+
+</html>
