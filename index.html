@@ -446,14 +446,187 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="section py-24 bg-zinc-950">
+    <section
+        id="projects"
+        class="section py-20 md:py-24 bg-zinc-950"
+        x-data="{
+            openModal: false,
+            project: {}
+        }"
+    >
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center heading-font mb-16">
-                Featured Projects
-            </h2>
-            <div class="text-center text-zinc-400 text-lg py-12">
-                Projects section is empty.<br>
-                Add your projects here later.
+            <!-- Header -->
+            <div class="text-center mb-14">
+                <span class="inline-block px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-medium border border-cyan-500/20 mb-4">
+                    My Work
+                </span>
+
+                <h2 class="text-4xl md:text-5xl font-bold heading-font mb-4">
+                    Featured Projects
+                </h2>
+
+                <p class="text-zinc-400 max-w-2xl mx-auto">
+                    A collection of projects showcasing my skills in web development,
+                    software engineering, and problem-solving.
+                </p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Online Booking and Reservation System -->
+                <div
+                    @click="
+                        project = {
+                            title: 'Online Booking and Reservation System',
+                            subtitle: 'Resort Reservation Platform',
+                            description: 'A full-featured reservation management system developed using Laravel and MySQL. Features booking management, event scheduling, image galleries, PDF reports, and administrator controls.',
+                            technologies: ['Laravel', 'PHP', 'MySQL', 'Bootstrap', 'FullCalendar', 'Tailwind', 'Alphine.js'],
+                            github: '#',
+                            icon: 'bi-calendar-check'
+                        };
+                        openModal = true;
+                    "
+                    class="cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-cyan-500 hover:-translate-y-2 transition-all duration-300">
+
+                    <div class="h-52 bg-zinc-800 flex items-center justify-center">
+                        <i class="bi bi-calendar-check text-6xl text-cyan-400"></i>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">
+                            Online Booking and Reservation System
+                        </h3>
+
+                        <p class="text-zinc-400 text-sm">
+                            Laravel-based resort reservation management platform.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3D Piko Game -->
+                <div
+                    @click="
+                        project = {
+                            title: 'Piko Game',
+                            subtitle: 'Three.js Strategy Game',
+                            description: 'A turn-based 3D strategy game built with Three.js featuring tile-based movement, house claiming mechanics, player progression, and interactive gameplay.',
+                            technologies: ['Three.js', 'JavaScript', 'HTML', 'CSS'],
+                            github: '#',
+                            demo: '#',
+                            icon: 'bi-controller'
+                        };
+                        openModal = true;
+                    "
+                    class="cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-cyan-500 hover:-translate-y-2 transition-all duration-300">
+
+                    <div class="h-52 bg-zinc-800 flex items-center justify-center">
+                        <i class="bi bi-controller text-6xl text-cyan-400"></i>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">
+                            Piko Game
+                        </h3>
+
+                        <p class="text-zinc-400 text-sm">
+                            Turn-based strategy game built with Three.js.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PisoFlow -->
+                <div
+                    @click="
+                        project = {
+                            title: 'To-Do List Application',
+                            subtitle: 'Task Management System',
+                            description: 'A responsive task management application built with Alpine.js, Tailwind CSS, PHP, and SQL featuring task organization and productivity tools.',
+                            technologies: ['Alpine.js', 'Tailwind CSS', 'PHP', 'MySQL'],
+                            github: '#',
+                            demo: '#',
+                            icon: 'bi-check2-square'
+                        };
+                        openModal = true;
+                    "
+                    class="cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-cyan-500 hover:-translate-y-2 transition-all duration-300">
+
+                    <div class="h-52 bg-zinc-800 flex items-center justify-center">
+                        <i class="bi bi-check2-square text-6xl text-cyan-400"></i>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">
+                            To-Do List App
+                        </h3>
+
+                        <p class="text-zinc-400 text-sm">
+                            Productivity and task management application.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+            x-show="openModal"
+            x-transition.opacity
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            style="display: none;"
+        >
+            <div
+                @click.outside="openModal = false"
+                x-show="openModal"
+                x-transition.scale
+                class="bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl"
+            >
+                <!-- Header Image -->
+                <div class="h-64 bg-zinc-800 flex items-center justify-center">
+                    <i :class="'bi ' + project.icon + ' text-8xl text-cyan-400'"></i>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3
+                                class="text-2xl md:text-3xl font-bold mb-2"
+                                x-text="project.title">
+                            </h3>
+
+                            <p
+                                class="text-zinc-400"
+                                x-text="project.subtitle">
+                            </p>
+                        </div>
+
+                        <button @click="openModal = false" class="text-zinc-400 hover:text-white text-2xl">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+
+                    <p class="text-zinc-300 leading-relaxed mb-6" x-text="project.description"></p>
+
+                    <!-- Technologies -->
+                    <div class="mb-8">
+                        <h4 class="font-semibold text-cyan-400 mb-3">
+                            Technologies Used
+                        </h4>
+
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="tech in project.technologies" :key="tech">
+                                <span class="px-3 py-2 bg-zinc-800 rounded-full text-sm" x-text="tech"></span>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-wrap gap-3">
+                        <a :href="project.github" target="_blank" class="border border-zinc-700 hover:border-cyan-500 px-5 py-3 rounded-xl transition-all">
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
